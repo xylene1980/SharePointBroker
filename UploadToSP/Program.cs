@@ -250,21 +250,38 @@ namespace UploadToSP
                 if(filetobeChecked.Contains('?'))
                 filetobeChecked=filetobeChecked.Split('?')[0];
                 filetobeChecked = filetobeChecked.Replace("%20", " ");
-                foreach (Folder f1 in fcol)
+                //Check in the Root Path
+                FileCollection fileCol = listLink.RootFolder.Files;
+                foreach (MSC.File file in fileCol)
                 {
-                    FileCollection fileCol = f1.Files;
-                    foreach (MSC.File file in fileCol)
+                    if (file.Name == filetobeChecked)
                     {
-                        if (file.Name == filetobeChecked)
+                        isPathFound = true;
+                        Console.WriteLine(" expected file {0}  found", filetobeChecked);
+                        break;
+                    }
+                }
+
+                if (!isPathFound)
+                {
+                    foreach (Folder f1 in fcol)
+                    {
+                        webInstance.Web.Context.Load(f1.Files);
+                        webInstance.Web.Context.ExecuteQuery();
+                        fileCol = f1.Files;
+                        foreach (MSC.File file in fileCol)
                         {
-                            isPathFound = true;
-                            Console.WriteLine(" expected file {0}  found", filetobeChecked);
+                            if (file.Name == filetobeChecked)
+                            {
+                                isPathFound = true;
+                                Console.WriteLine(" expected file {0}  found", filetobeChecked);
+                                break;
+                            }
+                        }
+                        if (isPathFound)
+                        {
                             break;
                         }
-                    }
-                    if (isPathFound)
-                    {
-                        break;
                     }
                 }
 

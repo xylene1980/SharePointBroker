@@ -2,3 +2,7 @@ BrokenLinkCheck/**
 DataMigrate/**
 Link_Selenium/**
 .vs/**
+packages/Selenium.WebDriver.3.141.0/**
+packages/Selenium.Chrome.WebDriver.2.45/**
+packages/DotNetSeleniumExtras.WaitHelpers.3.11.0/**
+UploadToSP/obj/**
