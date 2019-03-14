@@ -1,0 +1,4 @@
+language: csharp
+solution: UploadToSP.sln
+script:
+  - msbuild UploadToSP.sln
