@@ -1,4 +1,4 @@
 language: csharp
 solution: UploadToSP.sln
 script:
-  - msbuild /p: Configuration-Debug UploadToSP.sln
+  - msbuild /p: Configuration-Debug ./UploadToSP.sln
