@@ -1,4 +1,8 @@
 language: csharp
 solution: UploadToSP.sln
+before_install:
+  - sudo apt-get install nunit-console
+before_script:
+  - nuget restore UploadToSP.sln  
 script:
   - msbuild UploadToSP.sln
